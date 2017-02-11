@@ -134,10 +134,6 @@ $.get('https://s3-us-west-2.amazonaws.com/s.cdpn.io/95368/USA_geo.json', functio
 
     myChart.setOption(option);
 });
- window.addEventListener("resize", function () {
-
-                      option.myChart.resize();
-
-                  });
+    window.onresize = myCharts.resize();
     myChart.on('click', function (params) {window.open(params.data.provinceurl);
 });
