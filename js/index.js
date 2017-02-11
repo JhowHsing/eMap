@@ -1,7 +1,7 @@
 var myChart = echarts.init(document.getElementById('main'));
 
         // Specify configurations and data graphs 
-myChart.showLoading({text:'iUsed努力加载数据中...'});
+myChart.showLoading({text:'iUsed正努力加载数据中...'});
 
 $.get('https://s3-us-west-2.amazonaws.com/s.cdpn.io/95368/USA_geo.json', function (usaJson) {
     myChart.hideLoading();
@@ -45,7 +45,7 @@ $.get('https://s3-us-west-2.amazonaws.com/s.cdpn.io/95368/USA_geo.json', functio
             min: 0,
             max: 500,
             inRange: {
-                color: ['#424242', '#616161', '#757575', '#9E9E9E', '#E0E0E0', '#EEEEEE', '#DCEDC8', '#C5E1A5', '#AED581', '#9CCC65','#8BC34A']
+                color: ['#455A64', '#546E7A', '#607D8B', '#78909C', '#90A4AE', '#B0BEC5', '#DCEDC8', '#C5E1A5', '#AED581', '#9CCC65','#8BC34A']
             },
             text:['Opening','Wait to start'],           // 文本，默认为数值文本
             calculable: true
