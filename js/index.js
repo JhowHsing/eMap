@@ -3,7 +3,7 @@ var myChart = echarts.init(document.getElementById('main'));
         // Specify configurations and data graphs 
 myChart.showLoading({text:'iUsed努力加载数据中...'});
 
-$.get('USA_geo.json', function (usaJson) {
+$.get('https://s3-us-west-2.amazonaws.com/s.cdpn.io/95368/USA_geo.json', function (usaJson) {
     myChart.hideLoading();
 
     echarts.registerMap('USA', usaJson, {
