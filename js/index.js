@@ -1,7 +1,7 @@
-		var myChart = echarts.init(document.getElementById('main'));
+var myChart = echarts.init(document.getElementById('main'));
 
         // Specify configurations and data graphs 
-myChart.showLoading();
+myChart.showLoading({text:'iUsed努力加载数据中...'});
 
 $.get('https://s3-us-west-2.amazonaws.com/s.cdpn.io/95368/USA_geo.json', function (usaJson) {
     myChart.hideLoading();
@@ -24,45 +24,46 @@ $.get('https://s3-us-west-2.amazonaws.com/s.cdpn.io/95368/USA_geo.json', functio
         }
     });
     option = {
-        title : {
-            text: 'USA Population Estimates (2012)',
-            subtext: 'Data from www.census.gov',
-            sublink: 'http://www.census.gov/popest/data/datasets.html',
+        title: {
+            text: 'Unique Visitors On iUsed.org(Feb.2017)',
+            subtext: 'Data from api.iused.org',
+            sublink: 'http://api.iused.org',
             left: 'right'
         },
-        tooltip : {
+        tooltip: {
             trigger: 'item',
             showDelay: 0,
             transitionDuration: 0.2,
-            formatter : function (params) {
+            formatter: function (params) {
                 var value = (params.value + '').split('.');
                 value = value[0].replace(/(\d{1,3})(?=(?:\d{3})+(?!\d))/g, '$1,');
-                return params.seriesName + '<br/>' + params.name + ' : ' + value;
+                return params.seriesName + '<br/>' + params.name + ': ' + value+'人访问';
             }
         },
         visualMap: {
             left: 'right',
-            min: 500000,
-            max: 38000000,
-            color: ['orangered','yellow','lightskyblue'],
-            text:['High','Low'],           // 文本，默认为数值文本
-            calculable : true
+            min: 0,
+            max: 500,
+            inRange: {
+                color: ['#313695', '#4575b4', '#74add1', '#abd9e9', '#e0f3f8', '#ffffbf', '#fee090', '#fdae61', '#f46d43', '#d73027', '#a50026']
+            },
+            text:['Opening','Wait to start'],           // 文本，默认为数值文本
+            calculable: true
         },
         toolbox: {
-            show : true,
-            //orient : 'vertical',
+            show: true,
+            //orient: 'vertical',
             left: 'left',
             top: 'top',
-            feature : {
-                mark : {show: true},
-                dataView : {show: true, readOnly: false},
-                restore : {show: true},
-                saveAsImage : {show: true}
+            feature: {
+                dataView: {readOnly: true},
+                restore: {show:false},
+                saveAsImage: {}
             }
         },
-        series : [
+        series: [
             {
-                name: 'USA PopEstimates',
+                name: '初始数据统计中...',
                 type: 'map',
                 roam: true,
                 map: 'USA',
@@ -70,66 +71,68 @@ $.get('https://s3-us-west-2.amazonaws.com/s.cdpn.io/95368/USA_geo.json', functio
                     emphasis:{label:{show:true}}
                 },
                 // 文本位置修正
-                textFixed : {
-                    Alaska : [20, -20]
+                textFixed: {
+                    Alaska: [20, -20]
                 },
                 data:[
-                    {name : 'Alabama', value : 4822023},
-                    {name : 'Alaska', value : 731449},
-                    {name : 'Arizona', value : 6553255},
-                    {name : 'Arkansas', value : 2949131},
-                    {name : 'California', value : 38041430},
-                    {name : 'Colorado', value : 5187582},
-                    {name : 'Connecticut', value : 3590347},
-                    {name : 'Delaware', value : 917092},
-                    {name : 'District of Columbia', value : 632323},
-                    {name : 'Florida', value : 19317568},
-                    {name : 'Georgia', value : 9919945},
-                    {name : 'Hawaii', value : 1392313},
-                    {name : 'Idaho', value : 1595728},
-                    {name : 'Illinois', value : 12875255},
-                    {name : 'Indiana', value : 6537334},
-                    {name : 'Iowa', value : 3074186},
-                    {name : 'Kansas', value : 2885905},
-                    {name : 'Kentucky', value : 4380415},
-                    {name : 'Louisiana', value : 4601893},
-                    {name : 'Maine', value : 1329192},
-                    {name : 'Maryland', value : 5884563},
-                    {name : 'Massachusetts', value : 6646144},
-                    {name : 'Michigan', value : 9883360},
-                    {name : 'Minnesota', value : 5379139},
-                    {name : 'Mississippi', value : 2984926},
-                    {name : 'Missouri', value : 6021988},
-                    {name : 'Montana', value : 1005141},
-                    {name : 'Nebraska', value : 1855525},
-                    {name : 'Nevada', value : 2758931},
-                    {name : 'New Hampshire', value : 1320718},
-                    {name : 'New Jersey', value : 8864590},
-                    {name : 'New Mexico', value : 2085538},
-                    {name : 'New York', value : 19570261},
-                    {name : 'North Carolina', value : 9752073},
-                    {name : 'North Dakota', value : 699628},
-                    {name : 'Ohio', value : 11544225},
-                    {name : 'Oklahoma', value : 3814820},
-                    {name : 'Oregon', value : 3899353},
-                    {name : 'Pennsylvania', value : 12763536},
-                    {name : 'Rhode Island', value : 1050292},
-                    {name : 'South Carolina', value : 4723723},
-                    {name : 'South Dakota', value : 833354},
-                    {name : 'Tennessee', value : 6456243},
-                    {name : 'Texas', value : 26059203},
-                    {name : 'Utah', value : 2855287},
-                    {name : 'Vermont', value : 626011},
-                    {name : 'Virginia', value : 8185867},
-                    {name : 'Washington', value : 6897012},
-                    {name : 'West Virginia', value : 1855413},
-                    {name : 'Wisconsin', value : 5726398},
-                    {name : 'Wyoming', value : 576412},
-                    {name : 'Puerto Rico', value : 3667084}
+                    {name: 'Alabama', value: 0,provinceurl:"http://al.iused.org"},
+                    {name: 'Alaska', value: 0,provinceurl:"http://ak.iused.org"},
+                    {name: 'Arizona', value: 400,provinceurl:"http://az.iused.org"},
+                    {name: 'Arkansas', value: 0,provinceurl:"http://ar.iused.org"},
+                    {name: 'California', value: 0,provinceurl:"http://ca.iused.org"},
+                    {name: 'Colorado', value: 0,provinceurl:"http://co.iused.org"},
+                    {name: 'Connecticut', value: 0,provinceurl:"http://ct.iused.org"},
+                    {name: 'Delaware', value: 0,provinceurl:"http://de.iused.org"},
+                    {name: 'District of Columbia', value: 0,provinceurl:"http://dc.iused.org"},
+                    {name: 'Florida', value: 400,provinceurl:"http://fl.iused.org"},
+                    {name: 'Georgia', value: 0,provinceurl:"http://ga.iused.org"},
+                    {name: 'Hawaii', value: 0,provinceurl:"http://hi.iused.org"},
+                    {name: 'Idaho', value: 0,provinceurl:"http://id.iused.org"},
+                    {name: 'Illinois', value: 0,provinceurl:"http://il.iused.org"},
+                    {name: 'Indiana', value: 0,provinceurl:"http://in.iused.org"},
+                    {name: 'Iowa', value: 500,provinceurl:"http://ia.iused.org"},
+                    {name: 'Kansas', value: 500,provinceurl:"http://ks.iused.org"},
+                    {name: 'Kentucky', value: 0,provinceurl:"http://ky.iused.org"},
+                    {name: 'Louisiana', value: 0,provinceurl:"http://la.iused.org"},
+                    {name: 'Maine', value: 0,provinceurl:"http://me.iused.org"},
+                    {name: 'Maryland', value: 0,provinceurl:"http://md.iused.org"},
+                    {name: 'Massachusetts', value: 0,provinceurl:"http://ma.iused.org"},
+                    {name: 'Michigan', value: 400,provinceurl:"http://mi.iused.org"},
+                    {name: 'Minnesota', value: 0,provinceurl:"http://mn.iused.org"},
+                    {name: 'Mississippi', value: 0,provinceurl:"http://ms.iused.org"},
+                    {name: 'Missouri', value: 500,provinceurl:"http://mo.iused.org"},
+                    {name: 'Montana', value: 0,provinceurl:"http://mt.iused.org"},
+                    {name: 'Nebraska', value: 0,provinceurl:"http://ne.iused.org"},
+                    {name: 'Nevada', value: 0,provinceurl:"http://nv.iused.org"},
+                    {name: 'New Hampshire', value: 0,provinceurl:"http://nh.iused.org"},
+                    {name: 'New Jersey', value: 0,provinceurl:"http://nj.iused.org"},
+                    {name: 'New Mexico', value: 0,provinceurl:"http://nm.iused.org"},
+                    {name: 'New York', value: 0,provinceurl:"http://ny.iused.org"},
+                    {name: 'North Carolina', value: 0,provinceurl:"http://nc.iused.org"},
+                    {name: 'North Dakota', value: 0,provinceurl:"http://nd.iused.org"},
+                    {name: 'Ohio', value: 400,provinceurl:"http://oh.iused.org"},
+                    {name: 'Oklahoma', value: 500,provinceurl:"http://ok.iused.org"},
+                    {name: 'Oregon', value: 400,provinceurl:"http://or.iused.org"},
+                    {name: 'Pennsylvania', value: 400,provinceurl:"http://pa.iused.org"},
+                    {name: 'Rhode Island', value: 0,provinceurl:"http://ri.iused.org"},
+                    {name: 'South Carolina', value: 0,provinceurl:"http://sc.iused.org"},
+                    {name: 'South Dakota', value: 0,provinceurl:"http://sd.iused.org"},
+                    {name: 'Tennessee', value: 0,provinceurl:"http://tn.iused.org"},
+                    {name: 'Texas', value: 0,provinceurl:"http://tx.iused.org"},
+                    {name: 'Utah', value: 0,provinceurl:"http://ut.iused.org"},
+                    {name: 'Vermont', value: 0,provinceurl:"http://vt.iused.org"},
+                    {name: 'Virginia', value: 0,provinceurl:"http://va.iused.org"},
+                    {name: 'Washington', value: 0,provinceurl:"http://wa.iused.org"},
+                    {name: 'West Virginia', value: 0,provinceurl:"http://wv.iused.org"},
+                    {name: 'Wisconsin', value: 0,provinceurl:"http://wi.iused.org"},
+                    {name: 'Wyoming', value: 0,provinceurl:"http://wy.iused.org"},
+                    {name: 'Puerto Rico', value: 0,provinceurl:"http://pr.iused.org"}
                 ]
             }
         ]
     };
 
-	    myChart.setOption(option);
+    myChart.setOption(option);
+});
+    myChart.on('click', function (params) {window.open(params.data.provinceurl);
 });
