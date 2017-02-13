@@ -45,7 +45,7 @@ $.get('https://s3-us-west-2.amazonaws.com/s.cdpn.io/95368/USA_geo.json', functio
             min: 0,
             max: 500,
             inRange: {
-                color: ['#242424','#424242', '#616161', '#757575', '#9E9E9E', '#E0E0E0', '#EEEEEE', '#DCEDC8', '#C5E1A5', '#AED581', '#9CCC65','#8BC34A','#80bd01']
+                color: ['#424242', '#616161', '#757575', '#9E9E9E', '#E0E0E0', '#EEEEEE', '#DCEDC8', '#C5E1A5', '#AED581', '#9CCC65','#8BC34A']
             },
             text:['Opening','Wait to start'],           // 文本，默认为数值文本
             calculable: true
